@@ -51,19 +51,19 @@
 
 | Management Interface | description | Type | VRF | IP Address | Gateway |
 | -------------------- | ----------- | ---- | --- | ---------- | ------- |
-| Management1 | oob_management | oob | MGMT | 192.168.0.12/24 | 10.255.0.1 |
+| Management0 | oob_management | oob | MGMT | 192.168.0.12/24 | 10.255.0.1 |
 
 #### IPv6
 
 | Management Interface | description | Type | VRF | IPv6 Address | IPv6 Gateway |
 | -------------------- | ----------- | ---- | --- | ------------ | ------------ |
-| Management1 | oob_management | oob | MGMT | -  | - |
+| Management0 | oob_management | oob | MGMT | -  | - |
 
 ### Management Interfaces Device Configuration
 
 ```eos
 !
-interface Management1
+interface Management0
    description oob_management
    no shutdown
    vrf MGMT
@@ -240,54 +240,54 @@ vlan internal order ascending range 1006 1199
 
 | Interface | Description | Type | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | -----| ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
-| Ethernet2 | P2P_LINK_TO_LEAF1-DC1_Ethernet3 | routed | - | 172.31.255.2/31 | default | 1500 | false | - | - |
-| Ethernet3 | P2P_LINK_TO_LEAF2-DC1_Ethernet3 | routed | - | 172.31.255.8/31 | default | 1500 | false | - | - |
-| Ethernet4 | P2P_LINK_TO_LEAF3-DC1_Ethernet3 | routed | - | 172.31.255.14/31 | default | 1500 | false | - | - |
-| Ethernet5 | P2P_LINK_TO_LEAF4-DC1_Ethernet3 | routed | - | 172.31.255.20/31 | default | 1500 | false | - | - |
-| Ethernet6 | P2P_LINK_TO_BORDERLEAF1-DC1_Ethernet3 | routed | - | 172.31.255.26/31 | default | 1500 | false | - | - |
-| Ethernet7 | P2P_LINK_TO_BORDERLEAF2-DC1_Ethernet3 | routed | - | 172.31.255.32/31 | default | 1500 | false | - | - |
+| Ethernet2 | P2P_LINK_TO_LEAF1-DC1_Ethernet4 | routed | - | 172.31.255.2/31 | default | 1500 | false | - | - |
+| Ethernet3 | P2P_LINK_TO_LEAF2-DC1_Ethernet4 | routed | - | 172.31.255.8/31 | default | 1500 | false | - | - |
+| Ethernet4 | P2P_LINK_TO_LEAF3-DC1_Ethernet4 | routed | - | 172.31.255.14/31 | default | 1500 | false | - | - |
+| Ethernet5 | P2P_LINK_TO_LEAF4-DC1_Ethernet4 | routed | - | 172.31.255.20/31 | default | 1500 | false | - | - |
+| Ethernet6 | P2P_LINK_TO_BORDERLEAF1-DC1_Ethernet4 | routed | - | 172.31.255.26/31 | default | 1500 | false | - | - |
+| Ethernet7 | P2P_LINK_TO_BORDERLEAF2-DC1_Ethernet4 | routed | - | 172.31.255.32/31 | default | 1500 | false | - | - |
 
 ### Ethernet Interfaces Device Configuration
 
 ```eos
 !
 interface Ethernet2
-   description P2P_LINK_TO_LEAF1-DC1_Ethernet3
+   description P2P_LINK_TO_LEAF1-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.2/31
 !
 interface Ethernet3
-   description P2P_LINK_TO_LEAF2-DC1_Ethernet3
+   description P2P_LINK_TO_LEAF2-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.8/31
 !
 interface Ethernet4
-   description P2P_LINK_TO_LEAF3-DC1_Ethernet3
+   description P2P_LINK_TO_LEAF3-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.14/31
 !
 interface Ethernet5
-   description P2P_LINK_TO_LEAF4-DC1_Ethernet3
+   description P2P_LINK_TO_LEAF4-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.20/31
 !
 interface Ethernet6
-   description P2P_LINK_TO_BORDERLEAF1-DC1_Ethernet3
+   description P2P_LINK_TO_BORDERLEAF1-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.26/31
 !
 interface Ethernet7
-   description P2P_LINK_TO_BORDERLEAF2-DC1_Ethernet3
+   description P2P_LINK_TO_BORDERLEAF2-DC1_Ethernet4
    no shutdown
    mtu 1500
    no switchport
@@ -456,22 +456,22 @@ router bgp 65001
    neighbor IPv4-UNDERLAY-PEERS maximum-routes 12000
    neighbor 172.31.255.3 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.3 remote-as 65101
-   neighbor 172.31.255.3 description leaf1-DC1_Ethernet3
+   neighbor 172.31.255.3 description leaf1-DC1_Ethernet4
    neighbor 172.31.255.9 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.9 remote-as 65101
-   neighbor 172.31.255.9 description leaf2-DC1_Ethernet3
+   neighbor 172.31.255.9 description leaf2-DC1_Ethernet4
    neighbor 172.31.255.15 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.15 remote-as 65102
-   neighbor 172.31.255.15 description leaf3-DC1_Ethernet3
+   neighbor 172.31.255.15 description leaf3-DC1_Ethernet4
    neighbor 172.31.255.21 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.21 remote-as 65102
-   neighbor 172.31.255.21 description leaf4-DC1_Ethernet3
+   neighbor 172.31.255.21 description leaf4-DC1_Ethernet4
    neighbor 172.31.255.27 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.27 remote-as 65199
-   neighbor 172.31.255.27 description borderleaf1-DC1_Ethernet3
+   neighbor 172.31.255.27 description borderleaf1-DC1_Ethernet4
    neighbor 172.31.255.33 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.31.255.33 remote-as 65199
-   neighbor 172.31.255.33 description borderleaf2-DC1_Ethernet3
+   neighbor 172.31.255.33 description borderleaf2-DC1_Ethernet4
    neighbor 192.0.255.4 peer group EVPN-OVERLAY-PEERS
    neighbor 192.0.255.4 remote-as 65101
    neighbor 192.0.255.4 description leaf1-DC1

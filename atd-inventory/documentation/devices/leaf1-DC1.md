@@ -65,19 +65,19 @@
 
 | Management Interface | description | Type | VRF | IP Address | Gateway |
 | -------------------- | ----------- | ---- | --- | ---------- | ------- |
-| Management1 | oob_management | oob | MGMT | 192.168.0.21/24 | 10.255.0.1 |
+| Management0 | oob_management | oob | MGMT | 192.168.0.21/24 | 10.255.0.1 |
 
 #### IPv6
 
 | Management Interface | description | Type | VRF | IPv6 Address | IPv6 Gateway |
 | -------------------- | ----------- | ---- | --- | ------------ | ------------ |
-| Management1 | oob_management | oob | MGMT | -  | - |
+| Management0 | oob_management | oob | MGMT | -  | - |
 
 ### Management Interfaces Device Configuration
 
 ```eos
 !
-interface Management1
+interface Management0
    description oob_management
    no shutdown
    vrf MGMT
@@ -328,6 +328,7 @@ vlan 4094
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
 | Ethernet1 | MLAG_PEER_leaf2-DC1_Ethernet1 | *trunk | *2-4094 | *- | *['LEAF_PEER_L3', 'MLAG'] | 1 |
+| Ethernet2 | MLAG_PEER_leaf2-DC1_Ethernet2 | *trunk | *2-4094 | *- | *['LEAF_PEER_L3', 'MLAG'] | 1 |
 
 *Inherited from Port-Channel Interface
 
@@ -335,9 +336,9 @@ vlan 4094
 
 | Interface | Description | Type | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | -----| ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
-| Ethernet2 | P2P_LINK_TO_SPINE1-DC1_Ethernet2 | routed | - | 172.31.255.1/31 | default | 1500 | false | - | - |
-| Ethernet3 | P2P_LINK_TO_SPINE2-DC1_Ethernet2 | routed | - | 172.31.255.3/31 | default | 1500 | false | - | - |
-| Ethernet4 | P2P_LINK_TO_SPINE3-DC1_Ethernet2 | routed | - | 172.31.255.5/31 | default | 1500 | false | - | - |
+| Ethernet3 | P2P_LINK_TO_SPINE1-DC1_Ethernet2 | routed | - | 172.31.255.1/31 | default | 1500 | false | - | - |
+| Ethernet4 | P2P_LINK_TO_SPINE2-DC1_Ethernet2 | routed | - | 172.31.255.3/31 | default | 1500 | false | - | - |
+| Ethernet5 | P2P_LINK_TO_SPINE3-DC1_Ethernet2 | routed | - | 172.31.255.5/31 | default | 1500 | false | - | - |
 
 ### Ethernet Interfaces Device Configuration
 
@@ -349,20 +350,25 @@ interface Ethernet1
    channel-group 1 mode active
 !
 interface Ethernet2
+   description MLAG_PEER_leaf2-DC1_Ethernet2
+   no shutdown
+   channel-group 1 mode active
+!
+interface Ethernet3
    description P2P_LINK_TO_SPINE1-DC1_Ethernet2
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.1/31
 !
-interface Ethernet3
+interface Ethernet4
    description P2P_LINK_TO_SPINE2-DC1_Ethernet2
    no shutdown
    mtu 1500
    no switchport
    ip address 172.31.255.3/31
 !
-interface Ethernet4
+interface Ethernet5
    description P2P_LINK_TO_SPINE3-DC1_Ethernet2
    no shutdown
    mtu 1500
