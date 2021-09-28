@@ -19,6 +19,8 @@ The ATD Lab topology consists of two sets (DC1, DC2) of 3 Spines, 6 Leafs and 4 
   <img src="docs/imgs/L5Topology.png" alt="ATD Lab Topology" width="600"/>
 </p>
 
+Currently this demo only works on DC1. (DC2 and a DCI will be added in the future.)
+
 ## ATD Topology Device List
 
 | Device | IP Address   |
@@ -53,10 +55,10 @@ ansible-galaxy collection install arista.avd
 pip install cvprac --upgrade
 
 # Clone this repo
-https://github.com/tonybourkesdnpros/AVD-Level5.git
+git clone https://github.com/tonybourkesdnpros/AVD-Level5.git
 
 # Move to directory
-cd atd-avd
+cd AVD-Level5
 
 # Update Inventory with Lab Credentials
 edit credentials in vscode: AVD-Level5/atd-inventory/inventory.yml
@@ -66,7 +68,12 @@ $ ansible-playbook playbooks/atd-prepare-lab.yml
 
 # Execute Tasks in CVP manually
 
-# Run Playbook to Deploy AVD Setup
+# Run Playbook to build configurations with the "build" tag
+$ ansible-playbook playbooks/atd-fabric-deploy.yml --tags build
+
+This will create the configurations for the leafs and spines, but will not deploy them just yet. This is a good way to talk through documentations, SSoT files, etc. 
+
+# Run Playbook to build configurations and deploy
 $ ansible-playbook playbooks/atd-fabric-deploy.yml
 
 # Execute Tasks in CVP manually
