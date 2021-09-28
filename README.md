@@ -71,7 +71,7 @@ $ ansible-playbook playbooks/atd-prepare-lab.yml
 # Run Playbook to build configurations with the "build" tag
 $ ansible-playbook playbooks/atd-fabric-deploy.yml --tags build
 
-This will create the configurations for the leafs and spines, but will not deploy them just yet. This is a good way to talk through documentations, SSoT files, etc. 
+#This will create the configurations for the leafs and spines, but will not deploy them just yet. This is a good way to talk through documentations, SSoT files, etc. 
 
 # Run Playbook to build configurations and deploy
 $ ansible-playbook playbooks/atd-fabric-deploy.yml
