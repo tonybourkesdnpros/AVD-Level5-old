@@ -16,7 +16,7 @@ This repository is configured to run [`arista.cvp`](https://github.com/aristanet
 The ATD Lab topology consists of two sets (DC1, DC2) of 3 Spines, 6 Leafs and 4 Hosts, as shown below.
 
 <p align="center">
-  <img src="docs/imgs/atd-topo.png" alt="ATD Lab Topology" width="600"/>
+  <img src="docs/imgs/L5Topology.png" alt="ATD Lab Topology" width="600"/>
 </p>
 
 ## ATD Topology Device List
