@@ -62,7 +62,7 @@ l3leaf:
   defaults:
     # virtual router mac for VNIs assigned to Leaf switches
     # format: xx:xx:xx:xx:xx:xx
-    virtual_router_mac_address: 00:1c:73:00:dc:01
+    virtual_router_mac_address: 00:1c:73:00:00:99
     platform: cEOS-LAB
     bgp_as: 65100
     spines: [spine1-DC1, spine2-DC1, spine3-DC1]
