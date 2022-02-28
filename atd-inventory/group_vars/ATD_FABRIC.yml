@@ -45,13 +45,13 @@ spine:
   leaf_as_range: 65101-65132
   nodes:
     spine1-DC1:
-      id: 1
+      id: 11
       mgmt_ip: 192.168.0.11/24
     spine2-DC1:
-      id: 2
+      id: 12
       mgmt_ip: 192.168.0.12/24
     spine3-DC1:
-      id: 3
+      id: 13
       mgmt_ip: 192.168.0.13/24
 
 # Leaf switch groups
